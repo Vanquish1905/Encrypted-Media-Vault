@@ -14,20 +14,24 @@ SECURE METADATA: File hierarchies and original names are stored in an encrypted 
 
 MEDIA HANDLING: The application includes a custom preview engine that generates temporary thumbnails for images and videos using memory-buffered streams.  
   
-# IMPORTANT NOTES:  
 
-USAGE WARNING: Do not use this as the sole backup for critical or high-stakes data.  
-DATA RECOVERY: There is no administrative override or password recovery mechanism. If the access code is forgotten, the master key cannot be recovered, and all data within the vault will be permanently inaccessible.  
+
+# ⚠️ Important: Usage Instructions  
+You must close the application when you are finished using it. When you open a file for viewing (like an image or document), the vault decrypts it into a temporary "cache" directory within the application's data folder. This cache is only cleared and deleted when the application is properly closed. Leaving the application open or terminating it forcefully may leave decrypted files in your temporary folder.   
   
 # CORE FEATURES   
   
 BRUTE FORCE PREVENTION: Automated lockout timers triggered by consecutive failed login attempts.  
    
 # compiling:  
-pyinstaller --noconfirm --onefile --windowed --name "VanquishVault" --icon "icon.ico" --collect-all "cryptography" vanquish_ultimate.py  
+pyinstaller --noconsole --onefile --icon=icon.ico --collect-all customtkinter --add-data "icon.ico;." vanquish_vault.py
    
 # DEPENDENCIES  
 Python 3.10 or higher  
+
+customtkinter  
+
+argon2-cffi (Password hashing)
 
 PyQt6 (Interface)  
 
@@ -35,8 +39,37 @@ Cryptography (Security Engine)
 
 Pillow (Image Processing)  
 
-OpenCV (Video Processing)  
+OpenCV (Video Processing)    
 
+customtkinter  
+  
+Already Build in Libaries:  
+
+secrets  
+
+hashlib  
+
+base64  
+
+os  
+
+sys  
+
+json  
+
+shutil  
+
+threading  
+
+datetime  
+
+time  
+
+tempfile  
+
+io  
+
+tkinter  
   
 # TECHNICAL SPECIFICATIONS  
 This application manages data through an encrypted directory structure:  
